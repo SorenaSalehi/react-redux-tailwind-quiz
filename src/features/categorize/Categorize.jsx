@@ -7,20 +7,18 @@ import { categorizeFetched, catSelected } from "./CategorySlice";
 import { getCategorize } from "../../services/apiQuiz";
 
 export default function Categorize() {
- 
   //user selection
-  const { allCategorize,categoryId } = useSelector((store) => store.category);
-  console.log(allCategorize)
+  const { allCategorize, categoryId } = useSelector((store) => store.category);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function categorize(){
+    async function categorize() {
       const data = await getCategorize();
-     
-      dispatch(categorizeFetched(data))
+
+      dispatch(categorizeFetched(data));
     }
-    categorize()
+    categorize();
   }, []);
 
   function handleSelect(e) {
@@ -34,11 +32,12 @@ export default function Categorize() {
     <Card>
       <h1>icon</h1>
       <button>Categorize</button>
-      <select
-        value={categoryId}
-        onChange={handleSelect}
-        
-      >
+      <select value={categoryId} onChange={handleSelect}>
+        {/* //loading category */}
+        {allCategorize.length === 0 && <option>Loading ...</option>}
+
+        {/* //category fetched*/}
+
         {allCategorize.length > 0 &&
           allCategorize.map((item) => (
             <CategorizeItem item={item} key={item.id} />

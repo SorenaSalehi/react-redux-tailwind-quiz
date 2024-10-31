@@ -12,7 +12,6 @@ export default function Filter() {
     quizNumber,
   } = useSelector((store) => store.filter);
 
-  console.log(quizNumber);
   return (
     <Card>
       <h1>icon</h1>
