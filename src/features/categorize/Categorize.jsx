@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 
 import Card from "../../ui/Card";
 import CategorizeItem from "./CategorizeItem";
@@ -30,9 +32,16 @@ export default function Categorize() {
 
   return (
     <Card>
-      <h1>icon</h1>
-      <button>Categorize</button>
-      <select value={categoryId} onChange={handleSelect}>
+      <div className="text-6xl">
+        <FontAwesomeIcon icon={faLayerGroup} />
+      </div>
+      <div className="tracking-widest text-slate-400">Categorize</div>
+      <select
+        className="bg-transparent text-center w-9/12 text-wrap text-sm "
+        value={categoryId}
+        onChange={handleSelect}
+      
+      >
         {/* //loading category */}
         {allCategorize.length === 0 && <option>Loading ...</option>}
 

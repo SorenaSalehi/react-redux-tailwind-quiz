@@ -6,50 +6,45 @@ import Finished from "../Finished";
 import BooleanAnswer from "../answers/BooleanAnswer";
 import Multiple from "../answers/multiple/Multiple";
 import { Link, useNavigate } from "react-router-dom";
-import { gotError } from "./QuizSlice";
+import Error from "../Error";
+import Loader from "../Loader"
 
 export default function Quiz() {
   const { quiz, quizError, quizFinished } = useSelector((store) => store.quiz);
-  const navigate = useNavigate()
-  const dispatch =useDispatch()
 
   const quizType = quiz.type;
   const { isFinished } = quizFinished;
 
-  
-
-  //if got error
-  if (quizError !== "")
-    return (
-      <main>
-        <h1>{quizError}</h1>
-        <Link to='/home'>go back</Link>
-      </main>
-    );
-
-  //if not loading quiz and not finished game
-  if (quiz.length === 0 && !isFinished)
-    return (
-      <main>
-        <h1>is loading</h1>
-      </main>
-    );
-
-  //starting game
-  if (quiz.length > 0)
-    return (
-      <main className="flex flex-col">
-        <QuizHeader />
-        {quizType === "boolean" ? <BooleanAnswer /> : <Multiple />}
-        <FooterQuiz />
-      </main>
-    );
-
-  //finished game
-  if (isFinished)
-    return (
-      <main>
-        <Finished />
-      </main>
-    );
+  return (
+    <main className="flex flex-col text-slate-200 w-9/12 mx-auto backdrop-blur-2xl rounded-lg text-center p-2">
+      {
+        //if got error
+        quizError !== "" && (
+          <>
+            <Error />
+          </>
+        )
+      }
+      {
+        //if not loading quiz and not finished game
+        quiz.length === 0 && !isFinished && quizError === "" && (
+          <Loader/>
+        )
+      }
+      {
+        //starting game
+        quiz.length > 0 && (
+          <>
+            <QuizHeader />
+            {quizType === "boolean" ? <BooleanAnswer /> : <Multiple />}
+            <FooterQuiz />
+          </>
+        )
+      }
+      {
+        //finished game
+        isFinished && <Finished />
+      }
+    </main>
+  );
 }

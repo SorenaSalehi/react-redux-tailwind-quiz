@@ -15,9 +15,8 @@ export default function MultipleItem({ answer }) {
   const isTrue = answer === correctAnswer;
   const isSelected = selected === answer
   const isFalse = isSelected && !isTrue;
-  console.log('isTrue:',isTrue,'isSelected:' ,isSelected,'isFalse:',isFalse,'selected:',selected,'correect:',correctAnswer)
   function handleAnswer(e) {
-    console.log(e.target.value);
+    
     const answer = e.target.value;
     setSelected(answer);
     dispatch(checkingAnswer(answer, correctAnswer));
@@ -25,7 +24,7 @@ export default function MultipleItem({ answer }) {
   }
   return (
     <button
-      className={`${hasAnswered && isTrue && 'text-green-500'} ${hasAnswered && isFalse && 'text-red-500'} ${!hasAnswered && "hover:cursor-pointer"} `}
+      className={`text-xs w-max bg-sky-800/30 rounded-lg p-3 m-1 capitalize underline transition duration-300 delay-150 hover:scale-125 ${hasAnswered && isTrue && 'text-green-500'} ${hasAnswered && isFalse && 'text-red-500'} ${!hasAnswered && "hover:cursor-pointer"} `}
       value={answer}
       onClick={handleAnswer}
       disabled={hasAnswered}
@@ -34,3 +33,4 @@ export default function MultipleItem({ answer }) {
     </button>
   );
 }
+

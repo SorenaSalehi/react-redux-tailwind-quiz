@@ -13,8 +13,8 @@ export default function NextButton() {
   }
 
   return (
-    <div className="flex justify-evenly flex-1">
-      <button disabled={!hasAnswered} onClick={handleNext}>{isFinished ? 'finish' : 'next'}</button>
+    <div>
+      <button className="text-xl p-2 w-max bg-sky-800/30 rounded-lg font-semibold uppercase underline transition duration-300 delay-150 hover:scale-125" disabled={!hasAnswered} onClick={handleNext}>{isFinished ? 'finish' : 'next'}</button>
       
     </div>
   );

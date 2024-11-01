@@ -15,23 +15,23 @@ export default function Header() {
       const res = await getAvatar(gender)
       setAvatar(res);
     }
-    // getAvt()
+    getAvt()
   }, []);
 
 
     const time = getTime()
 
   return (
-    <header className="flex justify-between p-4 mb-4">
-      <div className="w-14">
+    <header className="flex justify-between p-4 mb-6 text-sky-200">
+      <div className="w-14 flex gap-2 capitalize">
         <img src={avatar} alt="avatar" className="w-auto"/>
-      </div>
-      <div>
-        <p>good {time}</p>
+        <div>
+        <p className="text-nowrap">good {time}</p>
         <User />
+        </div>
       </div>
       <div
-        className="flex
+        className="flex border-x-2 border-sky-900 p-2 h-max 
       "
       >
         <span>💎</span>

@@ -7,13 +7,10 @@ export function decodeHtmlEntities(text) {
 
 //time
 export function getTime() {
-  const hour = new Date().getHours();
-  
-  if (hour >= 5 || hour <= 12) return "morning";
-
-  if (hour >= 13 || hour <= 17) return "afternoon";
-
-  if (hour >= 18 || hour <= 21) return "evening";
-
+  const hour = new Date().getHours()
+  if (hour < 5) return "night";
+  if (hour < 12) return "morning";
+  if (hour < 18) return "afternoon";
+  if (hour < 22) return "evening";
   return "night";
 }

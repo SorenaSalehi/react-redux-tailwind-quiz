@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
+
 import Card from "../../ui/Card";
 import store from "../../Store";
-import { useDispatch, useSelector } from "react-redux";
 import { changedDifficulty, changedType, changedNum } from "./FilterSlice";
 
 export default function Filter() {
@@ -14,40 +17,48 @@ export default function Filter() {
 
   return (
     <Card>
-      <h1>icon</h1>
-      <h1>filter</h1>
-      <div>
-        <h3>difficulty</h3>
-        <select
-          value={diff}
-          onChange={(e) => dispatch(changedDifficulty(e.target.value))}
-        >
-          <option>any difficulty</option>
-          <option>easy</option>
-          <option>medium</option>
-          <option>hard</option>
-        </select>
+      <div className="text-2xl">
+        <FontAwesomeIcon icon={faFilter} />
       </div>
-      <div>
-        <h3>Type</h3>
-        <select
-          value={type}
-          onChange={(e) => dispatch(changedType(e.target.value))}
-        >
-          <option>any type</option>
-          <option>multiple</option>
-          <option value={"boolean"}>True/False</option>
-        </select>
+      <h6 className="text-slate-400 text-sm">filters</h6>
+      <div className="flex justify-between gap-1 my-2">
+        <div>
+          <h6 className="text-center text-sm border-y-2 text-slate-400 border-sky-300">difficulty</h6>
+          <select
+          className="bg-transparent uppercase text-xs cursor-pointer"
+            value={diff}
+            onChange={(e) => dispatch(changedDifficulty(e.target.value))}
+          >
+            <option className="bg-slate-800" value='any difficulty'>random</option>
+            <option className="bg-slate-800">easy</option>
+            <option className="bg-slate-800">medium</option>
+            <option className="bg-slate-800">hard</option>
+          </select>
+        </div>
+        <div>
+          <h3 className="text-center text-sm text-slate-400 border-y-2 border-sky-300">Type</h3>
+          <select
+          className="bg-transparent uppercase text-xs cursor-pointer"
+            value={type}
+            onChange={(e) => dispatch(changedType(e.target.value))}
+          >
+            <option className="bg-slate-800 text-[0.6rem]" value='any type'>random</option>
+            <option className="bg-slate-800">multiple</option>
+            <option className="bg-slate-800" value={"boolean"}>True/False</option>
+          </select>
+        </div>
       </div>
-      <div>
-        <h3>number of quiz</h3>
+
+      <div className="flex gap-1 my-2">
+        <h3 className="border-y-2 text-sm text-slate-400 border-sky-300 text-center">number of quiz</h3>
         <select
+        className="bg-transparent font-semibold cursor-pointer"
           value={quizNumber}
           onChange={(e) => dispatch(changedNum(e.target.value))}
         >
-          <option>3</option>
-          <option>5</option>
-          <option>10</option>
+          <option className="bg-slate-800">3</option>
+          <option className="bg-slate-800">5</option>
+          <option className="bg-slate-800">10</option>
         </select>
       </div>
     </Card>

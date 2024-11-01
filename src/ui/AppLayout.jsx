@@ -6,18 +6,21 @@ import Login from "./Login";
 
 export default function AppLayout() {
   const { userName } = useSelector((store) => store.user);
-  console.log(userName);
 
   return (
-    <div className="bg-stone-100 h-screen">
+    <div className=" bg-[url(home.avif)] bg-no-repeat bg-center bg-cover h-screen flex flex-col justify-between">
       {/* //if is the first time using app  */}
-      {userName === "" && <Login />}
+      {userName === "" && (
+        <div className="flex">
+          <Login />
+        </div>
+      )}
 
       {/* //if not first time  */}
       {userName !== "" && (
         <>
           <Header />
-          <main>
+          <main className="mb-16">
             <Outlet />
           </main>
         </>

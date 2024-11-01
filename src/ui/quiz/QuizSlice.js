@@ -20,6 +20,7 @@ const quizSlice = createSlice({
   reducers: {
     gotError(state, action) {
       state.quizError = action.payload;
+      
     },
     quizzesFetched: {
       prepare(results, dataLength) {
