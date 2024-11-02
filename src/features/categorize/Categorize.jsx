@@ -44,7 +44,7 @@ export default function Categorize() {
       </div>
       <div className="tracking-widest text-slate-400">Categorize</div>
       <select
-        className="bg-transparent text-center w-max backdrop-blur-lg text-wrap  text-sm "
+        className="bg-transparent text-center w-1/2 backdrop-blur-lg text-wrap  text-sm "
         value={categoryId}
         onChange={handleSelect}
       >
