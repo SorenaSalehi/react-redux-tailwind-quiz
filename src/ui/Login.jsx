@@ -17,7 +17,7 @@ export default function Login() {
     img.src = "login.webp";
     img.onload = () => setBgLoaded(true);
   }, []);
-  
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -36,7 +36,7 @@ export default function Login() {
   return (
     <div
       className={`${
-        bgLoaded ? "bg-[url('login.webp')]" : "bg-slate-800"
+        bgLoaded ? "bg-[url('/login.webp')]" : "bg-slate-800"
       } flex flex-col w-screen p-10 items-center h-screen  bg-no-repeat bg-center bg-cover `}
     >
       <div className="text-8xl text-sky-300 p-4 shadow-xl mb-4 backdrop-blur-lg rounded-xl overflow-hidden">
