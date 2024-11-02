@@ -1,13 +1,7 @@
 import React, { lazy } from "react";
 import { useSelector } from "react-redux";
 
-// const QuizHeader = lazy(() => import("./QuizHeader"));
-// const FooterQuiz = lazy(() => import("./FooterQuiz"));
-// const Finished = lazy(() => import("../Finished"));
-// const BooleanAnswer = lazy(() => import("../answers/BooleanAnswer"));
-// const Multiple = lazy(() => import("../answers/multiple/Multiple"));
-// const Error = lazy(()=>import("../Error"))
-// const Loader = lazy(()=>import("../Loader"))
+
 import QuizHeader from "./QuizHeader";
 import FooterQuiz from "./FooterQuiz";
 import Finished from "../Finished";
@@ -23,7 +17,7 @@ export default function Quiz() {
   const { isFinished } = quizFinished;
 
   return (
-    <main className="flex flex-col text-slate-200 w-9/12 mx-auto backdrop-blur-2xl rounded-lg text-center p-2">
+    <main className="flex flex-col text-slate-200 w-9/12 h-max mx-auto backdrop-blur-2xl rounded-lg text-center p-2">
       {
         //if got error
         quizError !== "" && (

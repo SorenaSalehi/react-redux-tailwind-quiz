@@ -45,7 +45,7 @@ export default function Login() {
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-between items-stretch gap-2 bg-stone-200 py-8 px-12 rounded-lg"
+        className="flex flex-col mt-20 justify-between items-stretch gap-2 bg-stone-200 py-8 px-12 rounded-lg"
       >
         <input
           type="text"

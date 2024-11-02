@@ -66,7 +66,7 @@ export default function Home() {
     cusQuiz();
   }
   return (
-    <main className="flex flex-col justify-center h-[75%]">
+    <main className="flex flex-col justify-evenly">
       <section className="flex flex-col gap-2 items-center justify-between">
         <Categorize />
         <Filter />
