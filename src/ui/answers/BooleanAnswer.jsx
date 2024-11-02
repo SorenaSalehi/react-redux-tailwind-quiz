@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { calcPoints, checkingAnswer } from "../quiz/QuizSlice";
 
 export default function BooleanAnswer() {
+
   const {quiz,quizIndex,isAnswerTrue,hasAnswered} = useSelector((store) => store.quiz);
-  const dispatch = useDispatch()
   const [selected,setSelected]=useState('False')
+  const dispatch = useDispatch()
 
   const {correct_answer:correctAnswer = '',difficulty=''} = quiz?.[quizIndex]
   const isTrue = selected  === 'True' && isAnswerTrue

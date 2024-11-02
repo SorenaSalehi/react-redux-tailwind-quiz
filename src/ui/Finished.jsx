@@ -37,7 +37,7 @@ export default function Finished() {
       )}
 
       <div className="text-md p-2 w-max bg-sky-800/30 rounded-lg font-semibold uppercase underline transition duration-300 delay-150 hover:scale-125">
-        <Link to="/home">restart &larr;</Link>
+        <Link to="/">restart &larr;</Link>
       </div>
     </div>
   );

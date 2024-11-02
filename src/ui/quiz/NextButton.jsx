@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { calcPoints, nextQuestion, quizFinishedAction } from "./QuizSlice";
+
+import {  nextQuestion, quizFinishedAction } from "./QuizSlice";
 
 export default function NextButton() {
     const {hasAnswered,quizIndex,quizLength} =useSelector(store => store.quiz)

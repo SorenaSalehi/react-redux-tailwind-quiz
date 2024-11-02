@@ -1,13 +1,20 @@
-import React from "react";
-import { QuizHeader } from "./QuizHeader";
+import React, { lazy } from "react";
+import { useSelector } from "react-redux";
+
+// const QuizHeader = lazy(() => import("./QuizHeader"));
+// const FooterQuiz = lazy(() => import("./FooterQuiz"));
+// const Finished = lazy(() => import("../Finished"));
+// const BooleanAnswer = lazy(() => import("../answers/BooleanAnswer"));
+// const Multiple = lazy(() => import("../answers/multiple/Multiple"));
+// const Error = lazy(()=>import("../Error"))
+// const Loader = lazy(()=>import("../Loader"))
+import QuizHeader from "./QuizHeader";
 import FooterQuiz from "./FooterQuiz";
-import { useDispatch, useSelector } from "react-redux";
 import Finished from "../Finished";
 import BooleanAnswer from "../answers/BooleanAnswer";
 import Multiple from "../answers/multiple/Multiple";
-import { Link, useNavigate } from "react-router-dom";
 import Error from "../Error";
-import Loader from "../Loader"
+import Loader from "../Loader";
 
 export default function Quiz() {
   const { quiz, quizError, quizFinished } = useSelector((store) => store.quiz);
@@ -27,9 +34,7 @@ export default function Quiz() {
       }
       {
         //if not loading quiz and not finished game
-        quiz.length === 0 && !isFinished && quizError === "" && (
-          <Loader/>
-        )
+        quiz.length === 0 && !isFinished && quizError === "" && <Loader />
       }
       {
         //starting game

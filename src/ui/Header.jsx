@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import UserPoints from "../features/user/UserPoints";
 import User from "../features/user/User";
-import { useSelector } from "react-redux";
 import { getAvatar } from "../services/apiAvatar";
 import { getTime } from "../utils/helpers";
 

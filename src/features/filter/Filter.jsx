@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { lazy, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
-import Card from "../../ui/Card";
-import store from "../../Store";
+
 import { changedDifficulty, changedType, changedNum } from "./FilterSlice";
+import Card from "../../ui/Card";
 
 export default function Filter() {
   const dispatch = useDispatch();

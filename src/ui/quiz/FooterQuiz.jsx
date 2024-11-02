@@ -1,7 +1,9 @@
-import React from "react";
+import React, { lazy } from "react";
 
-import Timer from "./Timer"
-import NextButton from "./NextButton";
+// const Time = lazy(()=>import("./Timer"))
+// const NextButton = lazy(()=>import("./NextButton"))
+import Timer from './Timer'
+import NextButton from './NextButton'
 
 export default function FooterQuiz() {
   return (
