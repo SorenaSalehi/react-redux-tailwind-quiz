@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { calcUserPoints } from "../features/user/userSlice";
 
 export default function Finished() {
-  const { quizPoints } = useSelector((store) => store.quiz);
+  const { quizPoints,isTimeFinished } = useSelector((store) => store.quiz);
   const dispatch = useDispatch();
   const [isClaimed, setIsClaimed] = useState(false);
 
@@ -17,13 +17,13 @@ export default function Finished() {
     <div className="flex flex-col justify-between items-center gap-12">
       {quizPoints === 0 && (
         <h1 className="capitalize tracking-widest text-2xl">
-          try harder next time 😉
+         {isTimeFinished ? 'Your Time is up , try harder next time 😉':'try harder next time 😉'}
         </h1>
       )}
       {quizPoints > 0 && (
         <>
           <h1 className="capitalize tracking-widest text-2xl">
-            you earn <span className="text-2xl underline">{quizPoints}</span>{" "}
+            {isTimeFinished ?'Your Time is up , you earn ':'You Earn '}<span className="text-2xl underline">{quizPoints}</span>{" "}
             points 🎉
           </h1>
           <button

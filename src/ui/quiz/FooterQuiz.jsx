@@ -7,7 +7,7 @@ import NextButton from './NextButton'
 
 export default function FooterQuiz() {
   return (
-    <div className="flex justify-between items-center p-3">
+    <div className=" flex justify-between items-center p-3">
       <Timer/>
       <NextButton/>
     </div>

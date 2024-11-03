@@ -11,13 +11,12 @@ import Error from "../Error";
 import Loader from "../Loader";
 
 export default function Quiz() {
-  const { quiz, quizError, quizFinished } = useSelector((store) => store.quiz);
-
+  const { quiz, quizError, quizFinished,isTimeFinished } = useSelector((store) => store.quiz);
   const quizType = quiz.type;
   const { isFinished } = quizFinished;
 
   return (
-    <main className="flex flex-col text-slate-200 w-9/12 h-max mx-auto backdrop-blur-2xl rounded-lg text-center p-2">
+    <main className="flex flex-col text-slate-200 backdrop-blur-2xl rounded-lg text-center p-1">
       {
         //if got error
         quizError !== "" && (
@@ -28,11 +27,11 @@ export default function Quiz() {
       }
       {
         //if not loading quiz and not finished game
-        quiz.length === 0 && !isFinished && quizError === "" && <Loader />
+        quiz.length === 0 && !isFinished && quizError === "" &&  <Loader />
       }
       {
         //starting game
-        quiz.length > 0 && (
+        quiz.length > 0 && !isTimeFinished && (
           <>
             <QuizHeader />
             {quizType === "boolean" ? <BooleanAnswer /> : <Multiple />}
@@ -42,7 +41,7 @@ export default function Quiz() {
       }
       {
         //finished game
-        isFinished && <Finished />
+        (isFinished || isTimeFinished) && <Finished />
       }
     </main>
   );

@@ -8,6 +8,7 @@ const initialState = {
   quizPoints: 0,
   hasAnswered: false,
   isAnswerTrue: "",
+  isTimeFinished:false,
   quizFinished: {
     isFinished: false,
     totalPoints: 0,
@@ -20,18 +21,17 @@ const quizSlice = createSlice({
   reducers: {
     gotError(state, action) {
       state.quizError = action.payload;
-      
     },
     quizzesFetched: {
       prepare(results, dataLength) {
         return { payload: { results, dataLength } };
       },
       reducer(state, action) {
-        
         state.quiz = action.payload.results.results;
         state.quizLength = action.payload.results.dataLength;
       },
     },
+
     checkingAnswer: {
       prepare(answer, correctAnswer) {
         return { payload: { answer, correctAnswer } };
@@ -67,17 +67,20 @@ const quizSlice = createSlice({
         state.quizIndex = 0;
       }
     },
+    quizTimeFinished(state){
+      state.isTimeFinished = true
+    },
     resettingQuiz(state) {
       state.quizFinished.isFinished = false;
       state.quiz = [];
-      state.quizError = ''
+      state.quizError = "";
       state.quizPoints = 0;
       state.hasAnswered = false;
       state.isAnswerTrue = "";
+      state.isTimeFinished = false
     },
   },
 });
-
 export const {
   gotError,
   quizzesFetched,
@@ -85,6 +88,7 @@ export const {
   nextQuestion,
   calcPoints,
   quizFinishedAction,
+  quizTimeFinished,
   resettingQuiz,
 } = quizSlice.actions;
 

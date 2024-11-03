@@ -27,7 +27,7 @@ export default function MultipleItem({ answer }) {
   
   return (
     <button
-      className={`text-xs w-max bg-sky-800/30 rounded-lg p-3 m-1 capitalize transition duration-300 delay-150 hover:scale-125 ${hasAnswered && isTrue && 'text-green-500'} ${hasAnswered && isFalse && 'text-red-500'} ${!hasAnswered && "hover:cursor-pointer"} `}
+      className={`text-xs bg-sky-800/30 rounded-lg p-2 m-2 capitalize transition duration-300 delay-150 hover:scale-125 ${hasAnswered && isTrue && 'text-green-500'} ${hasAnswered && isFalse && 'text-red-500'} ${!hasAnswered && "hover:cursor-pointer"} `}
       value={answer}
       onClick={handleAnswer}
       disabled={hasAnswered}
