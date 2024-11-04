@@ -19,13 +19,13 @@ export default function AppLayout() {
     <div
       className={`  ${
         bgLoaded ? "bg-[url('/home.webp')]" : "bg-slate-800"
-      } bg-no-repeat bg-center bg-slate-900 h-screen flex flex-col gap-40 sm:gap-10 sm:overflow-y-scroll`}
+      } bg-no-repeat bg-center bg-slate-900 h-dvh flex flex-col justify-between sm:gap-10 sm:overflow-y-scroll`}
     >
       <Header />
-      <main className="flex justify-center m-2 sm:h-3/4">
+      <main className="flex justify-center m-2 ">
         <Outlet />
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="px-4 mx-auto text-xs text-sky-100">
+    <footer className="px-4 mx-auto mb-3 text-xs text-sky-100">
       <p className="text-justify">
         Crafted with ❤️ by Sorena. Connect with me on{" "}
         <a
