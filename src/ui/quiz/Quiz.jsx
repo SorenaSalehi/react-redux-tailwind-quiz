@@ -1,7 +1,6 @@
 import React, { lazy } from "react";
 import { useSelector } from "react-redux";
 
-
 import QuizHeader from "./QuizHeader";
 import FooterQuiz from "./FooterQuiz";
 import Finished from "../Finished";
@@ -11,12 +10,14 @@ import Error from "../Error";
 import Loader from "../Loader";
 
 export default function Quiz() {
-  const { quiz, quizError, quizFinished,isTimeFinished } = useSelector((store) => store.quiz);
+  const { quiz, quizError, quizFinished, isTimeFinished } = useSelector(
+    (store) => store.quiz
+  );
   const quizType = quiz.type;
   const { isFinished } = quizFinished;
 
   return (
-    <main className="flex flex-col text-slate-200 backdrop-blur-2xl rounded-lg text-center p-1">
+    <main className="flex flex-col p-1 m-2 text-center rounded-lg text-slate-200 backdrop-blur-2xl sm:h-max">
       {
         //if got error
         quizError !== "" && (
@@ -27,7 +28,7 @@ export default function Quiz() {
       }
       {
         //if not loading quiz and not finished game
-        quiz.length === 0 && !isFinished && quizError === "" &&  <Loader />
+        quiz.length === 0 && !isFinished && quizError === "" && <Loader />
       }
       {
         //starting game

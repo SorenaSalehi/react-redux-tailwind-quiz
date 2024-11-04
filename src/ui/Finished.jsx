@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { calcUserPoints } from "../features/user/userSlice";
+import Button from "./Button";
 
 export default function Finished() {
   const { quizPoints,isTimeFinished } = useSelector((store) => store.quiz);
@@ -26,19 +27,13 @@ export default function Finished() {
             {isTimeFinished ?'Your Time is up , you earn ':'You Earn '}<span className="text-2xl underline">{quizPoints}</span>{" "}
             points 🎉
           </h1>
-          <button
-            disabled={isClaimed}
-            className="text-xl p-2 w-max text-green-500 bg-sky-800/30 rounded-lg font-semibold uppercase transition duration-300 delay-150 hover:scale-125"
-            onClick={handlePoints}
-          >
-            claim points
-          </button>
+          <Button textColor='text-green-400' disabled={isClaimed} handleClick={handlePoints}>claim points</Button>
+         
         </>
       )}
 
-      <div className="text-md p-2 w-max bg-sky-800/30 rounded-lg font-semibold uppercase underline transition duration-300 delay-150 hover:scale-125">
-        <Link to="/">restart &larr;</Link>
-      </div>
+      
+      <Button bgColor='bg-transparent' textSize='xs' type='link' to='/' >restart &larr;</Button>
     </div>
   );
 }

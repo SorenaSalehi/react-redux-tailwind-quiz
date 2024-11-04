@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { settingUser } from "../features/user/userSlice";
+import Button from "./Button";
 
 export default function Login() {
   const [userName, setUserName] = useState("");
@@ -17,7 +18,6 @@ export default function Login() {
     img.src = "login.webp";
     img.onload = () => setBgLoaded(true);
   }, []);
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,13 +39,13 @@ export default function Login() {
         bgLoaded ? "bg-[url('/login.webp')]" : "bg-slate-800"
       } flex flex-col w-screen p-10 items-center h-screen  bg-no-repeat bg-center bg-cover `}
     >
-      <div className="text-8xl text-sky-300 p-4 shadow-xl mb-4 backdrop-blur-lg rounded-xl overflow-hidden">
+      <div className="p-4 mb-4 overflow-hidden shadow-xl text-8xl text-sky-300 backdrop-blur-lg rounded-xl sm:mb-0">
         Quiz
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col mt-20 justify-between items-stretch gap-2 bg-stone-200 py-8 px-12 rounded-lg"
+        className="flex flex-col items-stretch justify-between gap-2 px-12 py-8 mt-20 rounded-lg bg-stone-200 sm:mt-10"
       >
         <input
           type="text"
@@ -54,35 +54,34 @@ export default function Login() {
           placeholder="NAME"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          className="border-x-4 font-semibold border-sky-500 bg-stone-100 focus:ring-2 text-sky-500 focus:ring-sky-500  rounded-md s text-center shadow-xl placeholder:text-sky-500 focus:ring-inset focus:outline-none h-10 transition delay-150 focus:scale-x-90"
+          className="h-10 font-semibold text-center transition delay-150 rounded-md shadow-xl border-x-4 border-sky-500 bg-stone-100 focus:ring-2 text-sky-500 focus:ring-sky-500 s placeholder:text-sky-500 focus:ring-inset focus:outline-none focus:scale-x-90"
         />
 
         {error !== "" && (
-          <div className="text-red-500 p-2 rounded-md bg-slate-50">{error}</div>
+          <div className="p-2 text-red-500 rounded-md bg-slate-50">{error}</div>
         )}
         <select
           name="gender"
           value={gender}
           onChange={(e) => setGender(e.target.value)}
-          className="border-none bg-stone-100 shadow-xl text-sky-500 font-semibold tracking-widest text-center uppercase focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-xl hover:cursor-pointer h-8"
+          className="h-8 font-semibold tracking-widest text-center uppercase border-none shadow-xl bg-stone-100 text-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-xl hover:cursor-pointer"
         >
           <option className="text-stone-300">gender</option>
           <option
             value={"male"}
-            className="bg-sky-500 text-stone-800 font-semibold "
+            className="font-semibold bg-sky-500 text-stone-800 "
           >
             male
           </option>
           <option
             value={"female"}
-            className="bg-rose-400 text-stone-800 font-semibold"
+            className="font-semibold bg-rose-400 text-stone-800"
           >
             female
           </option>
         </select>
-        <button className="text-stone-200 border-x-4 border-sky-500 bg-sky-600 p-4 shadow-2xl rounded-md  uppercase font-semibold tracking-widest text-2xl transition ease-in-out delay-150 hover:translate-y-1 hover:scale-110 hover:border-y-4 hover:border-sky-500 duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 ">
-          submit
-        </button>
+
+        <Button>submit</Button>
       </form>
     </div>
   );

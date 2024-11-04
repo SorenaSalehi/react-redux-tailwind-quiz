@@ -23,8 +23,8 @@ export default function Header() {
     const time = getTime()
 
   return (
-    <header className="flex justify-between p-4 mb-6 text-sky-200">
-      <div className="w-14 flex gap-2 capitalize">
+    <header className="flex justify-between p-4 text-sky-200">
+      <div className="flex gap-2 capitalize w-14">
         <img src={avatar} alt="avatar" className="w-auto"/>
         <div>
         <p className="text-nowrap">good {time}</p>
@@ -32,8 +32,7 @@ export default function Header() {
         </div>
       </div>
       <div
-        className="flex border-x-2 border-sky-900 p-2 h-max 
-      "
+        className="flex p-2 border-x-2 border-sky-900 h-max sm:text-xl"
       >
         <span>💎</span>
         <UserPoints />

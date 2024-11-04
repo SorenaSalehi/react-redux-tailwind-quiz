@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import getCustomsQuiz, { getDefaultQuiz } from "../services/apiQuiz";
 import { gotError, quizzesFetched, resettingQuiz } from "./quiz/QuizSlice";
 
-
-import Categorize from "../features/categorize/Categorize"
-import Filter from "../features/filter/Filter"
+import Categorize from "../features/categorize/Categorize";
+import Filter from "../features/filter/Filter";
+import Button from "./Button";
 
 export default function Home() {
   //filter slice
@@ -67,23 +67,22 @@ export default function Home() {
   }
   return (
     <main className="flex flex-col justify-evenly">
-      <section className="flex flex-col gap-2 items-center justify-between">
+      <section className="flex flex-col items-center justify-between gap-2 sm:flex-row">
         <Categorize />
         <Filter />
       </section>
 
-      <div className="flex justify-center text-2xl mx-auto bg-rose-400/85 text-sky-900 rounded-lg font-semibold p-3 uppercase transition duration-300 delay-150 hover:scale-125">
-        <Link
-          to="/quiz"
-          onClick={() =>
-            isDefault
-              ? handleDefaultStart()
-              : handleCustomsStart(categoryId, diff, type, quizNumber)
-          }
-        >
-          start
-        </Link>
-      </div>
+      <Button
+        type="link"
+        to="/quiz"
+        handleClick={() =>
+          isDefault
+            ? handleDefaultStart()
+            : handleCustomsStart(categoryId, diff, type, quizNumber)
+        }
+      >
+        start
+      </Button>
     </main>
   );
 }

@@ -16,7 +16,12 @@ export default function QuizHeader() {
         {category}
         <span className="px-2 font-semibold">{difficulty}</span>
       </p>
-      <p className="text-justify py-10 px-2">{decodeHtmlEntities(question)}</p>
+      <p className="px-2 py-10 text-justify text-wrap sm:text-xl sm:py-3">
+        <span className="px-2 pt-1 pb-1 mr-1 text-sm border rounded-full border-sky-400 text-sky-300">
+          {quizIndex + 1}
+        </span>
+        {decodeHtmlEntities(question)}
+      </p>
     </div>
   );
 }

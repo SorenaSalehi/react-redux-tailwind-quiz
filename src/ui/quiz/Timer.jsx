@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { quizTimeFinished } from "./QuizSlice";
 
@@ -27,12 +27,21 @@ export default function Timer() {
     if (remainTime === 0) dispatch(quizTimeFinished());
   }, [remainTime]);
 
-  const min = Math.floor(remainTime / 60);
-  const sec = remainTime % 60;
+  // const min = Math.floor(remainTime / 60);
+  // const sec = remainTime % 60;
 
+  const {formattedTime,min} = useMemo(()=>{
+    const min = Math.floor(remainTime / 60)
+    const sec = remainTime % 60
+    const formattedTime =  `${min < 10 ? 0 : ''}${min}:${sec < 10 ? 0 : ''}${sec}`
+    return {formattedTime,min}
+  },[remainTime]) 
   return (
-    <div className={`mr-auto ${min < 1 ? "text-rose-600" : ""}`}>{`${min < 10 ? '0' : ''}${min}:${
+    <div className={`mr-auto ${min < 1 ? "text-rose-600" : ""}`}>
+      {/* {`${min < 10 ? '0' : ''}${min}:${
       sec < 10 ? "0" : ""
-    }${sec}`}</div>
+    }${sec}`} */}
+    {formattedTime}
+    </div>
   );
 }

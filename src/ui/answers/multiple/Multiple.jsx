@@ -12,5 +12,5 @@ export default function Multiple() {
   const allAnswers = [...incorrectAnswers, correctAnswer];
   const answers = [...allAnswers].sort()
 
-  return <div className="grid grid-cols-2">{answers.map(answer => <MultipleItem answer={answer} key={answer}/>)}</div>;
+  return <div className="grid grid-cols-2 ">{answers.map(answer => <MultipleItem answer={answer} key={answer}/>)}</div>;
 }
