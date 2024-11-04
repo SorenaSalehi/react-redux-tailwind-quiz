@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 import Header from "./Header";
+import Footer from "./Footer";
 const Login = lazy(() => import("./Login"));
 
 export default function AppLayout() {
@@ -24,6 +25,7 @@ export default function AppLayout() {
       <main className="flex justify-center m-2 sm:h-3/4">
         <Outlet />
       </main>
+      <Footer/>
     </div>
   );
 }

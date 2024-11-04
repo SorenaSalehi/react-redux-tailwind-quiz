@@ -7,6 +7,7 @@ import { gotError, quizzesFetched, resettingQuiz } from "./quiz/QuizSlice";
 import Categorize from "../features/categorize/Categorize";
 import Filter from "../features/filter/Filter";
 import Button from "./Button";
+import Footer from "./Footer";
 
 export default function Home() {
   //filter slice
