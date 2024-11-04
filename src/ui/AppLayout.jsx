@@ -1,14 +1,13 @@
 import React, { lazy, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 import Header from "./Header";
 import Footer from "./Footer";
-const Login = lazy(() => import("./Login"));
 
 export default function AppLayout() {
   const [bgLoaded, setBgLoaded] = useState(false);
 
+  //bg img lazy loading , using in className
   useEffect(() => {
     const img = new Image();
     img.src = "home.webp";

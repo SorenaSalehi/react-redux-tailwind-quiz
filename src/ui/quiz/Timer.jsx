@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { quizTimeFinished } from "./QuizSlice";
 
 export default function Timer() {
-  const {quizTime}=useSelector(store => store.filter)
+  const { quizTime } = useSelector((store) => store.filter);
   const [remainTime, setRemainTime] = useState(quizTime);
   const dispatch = useDispatch();
 
-  //start timer
+  //start timer on mount
   useEffect(() => {
     const id = setInterval(() => {
       setRemainTime((remain) => {
@@ -22,26 +22,24 @@ export default function Timer() {
     return () => clearInterval(id);
   }, []);
 
-  //timer finished
+  //if time finished
   useEffect(() => {
     if (remainTime === 0) dispatch(quizTimeFinished());
   }, [remainTime]);
 
-  // const min = Math.floor(remainTime / 60);
-  // const sec = remainTime % 60;
+  //calc time remain and format it
+  const { formattedTime, min } = useMemo(() => {
+    const min = Math.floor(remainTime / 60);
+    const sec = remainTime % 60;
+    const formattedTime = `${min < 10 ? 0 : ""}${min}:${
+      sec < 10 ? 0 : ""
+    }${sec}`;
+    return { formattedTime, min };
+  }, [remainTime]);
 
-  const {formattedTime,min} = useMemo(()=>{
-    const min = Math.floor(remainTime / 60)
-    const sec = remainTime % 60
-    const formattedTime =  `${min < 10 ? 0 : ''}${min}:${sec < 10 ? 0 : ''}${sec}`
-    return {formattedTime,min}
-  },[remainTime]) 
   return (
     <div className={`mr-auto ${min < 1 ? "text-rose-600" : ""}`}>
-      {/* {`${min < 10 ? '0' : ''}${min}:${
-      sec < 10 ? "0" : ""
-    }${sec}`} */}
-    {formattedTime}
+      {formattedTime}
     </div>
   );
 }

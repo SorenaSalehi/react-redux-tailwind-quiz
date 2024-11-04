@@ -16,9 +16,8 @@ export default function Home() {
     type,
     quizNumber,
   } = useSelector((store) => store.filter);
-
   //category slice
-  const { categoryName, categoryId } = useSelector((store) => store.category);
+  const { categoryId } = useSelector((store) => store.category);
   const dispatch = useDispatch();
 
   //reset quiz from quiz slice
@@ -26,7 +25,7 @@ export default function Home() {
     dispatch(resettingQuiz());
   }, []);
 
-  //fetching default or custom
+  //for executing default or custom func
   const isDefault =
     categoryId === 9 &&
     diff === "random" &&

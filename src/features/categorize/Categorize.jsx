@@ -1,25 +1,20 @@
 import React, { lazy, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-// const FontAwesomeIcon = lazy(() => import("@fortawesome/react-fontawesome"));
-// const faLayerGroup = lazy(() => import("@fortawesome/react-fontawesome"));
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 
 import { categorizeFetched, catSelected } from "./CategorySlice";
 import { getCategorize } from "../../services/apiQuiz";
-
-// const Card = lazy(() => import("../../ui/Card"));
-// const CategorizeItem = lazy(() => import("./CategorizeItem"));
-import Card from '../../ui/Card'
-import CategorizeItem from './CategorizeItem'
+import Card from "../../ui/Card";
+import CategorizeItem from "./CategorizeItem";
 
 export default function Categorize() {
-  //user selection
-  const { allCategorize, categoryId } = useSelector(store => store.category)
-
+  //user choice
+  const { allCategorize, categoryId } = useSelector((store) => store.category);
   const dispatch = useDispatch();
 
+  //fetching categorize on mount
   useEffect(() => {
     async function categorize() {
       const data = await getCategorize();
@@ -29,11 +24,11 @@ export default function Categorize() {
     categorize();
   }, []);
 
- 
   function handleSelect(e) {
+    //for option text
     const categoryName = e.target.options[e.target.selectedIndex].text;
+    //for option value
     const CategoryId = +e.target.value;
-    console.log("name", categoryName, CategoryId);
     dispatch(catSelected(categoryName, CategoryId));
   }
 
@@ -48,11 +43,10 @@ export default function Categorize() {
         value={categoryId}
         onChange={handleSelect}
       >
-        {/* //loading category */}
+        {/* //loading categorize */}
         {allCategorize.length === 0 && <option>Loading ...</option>}
 
-        {/* //category fetched*/}
-
+        {/* //categorize fetched*/}
         {allCategorize.length > 0 &&
           allCategorize.map((item) => (
             <CategorizeItem item={item} key={item.id} />

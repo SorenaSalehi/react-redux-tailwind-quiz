@@ -4,7 +4,7 @@ const initialState = {
   difficulty: "any difficulty",
   type: "any type",
   quizNumber: "3",
-  quizTime: 180,
+  quizTime: 90,
 };
 const filterSlice = createSlice({
   name: "filter",

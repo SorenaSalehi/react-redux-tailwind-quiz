@@ -9,10 +9,14 @@ export default function NextButton() {
     (store) => store.quiz
   );
   const dispatch = useDispatch();
+
+  //quiz finished or not
   const isFinished = quizIndex + 1 === quizLength;
 
   function handleClick() {
+    //if quiz not finished
     dispatch(nextQuestion());
+    //if finished
     dispatch(quizFinishedAction());
   }
 

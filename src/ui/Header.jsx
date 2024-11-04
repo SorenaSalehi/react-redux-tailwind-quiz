@@ -9,31 +9,29 @@ import { getTime } from "../utils/helpers";
 export default function Header() {
   const { gender } = useSelector((store) => store.user);
   const [avatar, setAvatar] = useState("avatar");
- 
- //fetch avatar
+
+  //fetching avatar
   useEffect(() => {
     async function getAvt() {
-      const res = await getAvatar(gender)
+      const res = await getAvatar(gender);
       setAvatar(res);
     }
-    getAvt()
+    getAvt();
   }, []);
 
-
-    const time = getTime()
+  //getting time from helper.js for display message on header
+  const time = getTime();
 
   return (
     <header className="flex justify-between p-4 text-sky-200">
       <div className="flex gap-2 capitalize w-14">
-        <img src={avatar} alt="avatar" className="w-auto"/>
+        <img src={avatar} alt="avatar" className="w-auto" />
         <div>
-        <p className="text-nowrap">good {time}</p>
-        <User />
+          <p className="text-nowrap">good {time}</p>
+          <User />
         </div>
       </div>
-      <div
-        className="flex p-2 border-x-2 border-sky-900 h-max sm:text-xl"
-      >
+      <div className="flex p-2 border-x-2 border-sky-900 h-max sm:text-xl">
         <span>💎</span>
         <UserPoints />
       </div>

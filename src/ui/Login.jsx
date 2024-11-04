@@ -13,24 +13,26 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //img lazy loading
   useEffect(() => {
     const img = new Image();
     img.src = "login.webp";
     img.onload = () => setBgLoaded(true);
   }, []);
 
+  //handling login submit
   function handleSubmit(e) {
     e.preventDefault();
+
+    //if no gender return
     if (gender === "") {
       setError("please select your gender !!");
       return;
     }
-    if (gender !== "") {
-      dispatch(settingUser(userName, gender));
-      setError("");
-      navigate("/");
-      return;
-    }
+
+    dispatch(settingUser(userName, gender));
+    setError("");
+    navigate("/");
   }
 
   return (
@@ -57,6 +59,7 @@ export default function Login() {
           className="h-10 font-semibold text-center transition delay-150 rounded-md shadow-xl border-x-4 border-sky-500 bg-stone-100 focus:ring-2 text-sky-500 focus:ring-sky-500 s placeholder:text-sky-500 focus:ring-inset focus:outline-none focus:scale-x-90"
         />
 
+        {/* //display error if no gender */}
         {error !== "" && (
           <div className="p-2 text-red-500 rounded-md bg-slate-50">{error}</div>
         )}

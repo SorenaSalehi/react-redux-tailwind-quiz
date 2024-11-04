@@ -8,7 +8,7 @@ const initialState = {
   quizPoints: 0,
   hasAnswered: false,
   isAnswerTrue: "",
-  isTimeFinished:false,
+  isTimeFinished: false,
   quizFinished: {
     isFinished: false,
     totalPoints: 0,
@@ -59,6 +59,7 @@ const quizSlice = createSlice({
       }
     },
 
+    //if quiz finished
     quizFinishedAction(state) {
       if (state.quizIndex === state.quizLength) {
         state.quizFinished.isFinished = true;
@@ -67,9 +68,11 @@ const quizSlice = createSlice({
         state.quizIndex = 0;
       }
     },
-    quizTimeFinished(state){
-      state.isTimeFinished = true
+    quizTimeFinished(state) {
+      state.isTimeFinished = true;
     },
+
+    //if go back to home page
     resettingQuiz(state) {
       state.quizFinished.isFinished = false;
       state.quiz = [];
@@ -77,7 +80,7 @@ const quizSlice = createSlice({
       state.quizPoints = 0;
       state.hasAnswered = false;
       state.isAnswerTrue = "";
-      state.isTimeFinished = false
+      state.isTimeFinished = false;
     },
   },
 });

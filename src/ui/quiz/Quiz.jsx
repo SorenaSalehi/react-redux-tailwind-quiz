@@ -13,13 +13,16 @@ export default function Quiz() {
   const { quiz, quizError, quizFinished, isTimeFinished } = useSelector(
     (store) => store.quiz
   );
+
+  //display multiple answer or boolean
   const quizType = quiz.type;
+  //finish or not
   const { isFinished } = quizFinished;
 
   return (
     <main className="flex flex-col p-1 m-2 text-center rounded-lg text-slate-200 backdrop-blur-2xl sm:h-max">
       {
-        //if got error
+        //if is error
         quizError !== "" && (
           <>
             <Error />
@@ -27,7 +30,7 @@ export default function Quiz() {
         )
       }
       {
-        //if not loading quiz and not finished game
+        //if not load quiz and not finished game
         quiz.length === 0 && !isFinished && quizError === "" && <Loader />
       }
       {

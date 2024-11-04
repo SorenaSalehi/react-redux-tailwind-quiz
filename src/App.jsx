@@ -4,11 +4,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Suspense from "./ui/Suspense";
 import AppLayout from "./ui/AppLayout";
 import { useSelector } from "react-redux";
+
 import Login from "./ui/Login";
 const Home = lazy(() => import("./ui/Home"));
 const Quiz = lazy(() => import("./ui/quiz/Quiz"));
 
 export default function App() {
+  //for display login or AppLayout
   const { userName } = useSelector((store) => store.user);
 
   //router

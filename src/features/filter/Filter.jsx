@@ -9,6 +9,8 @@ import Card from "../../ui/Card";
 
 export default function Filter() {
   const dispatch = useDispatch();
+
+  //filters value and also onChange events will run in the filter slice
   const {
     difficulty: diff,
     type,
