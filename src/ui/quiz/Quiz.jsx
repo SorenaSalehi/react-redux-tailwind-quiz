@@ -1,4 +1,3 @@
-import React, { lazy } from "react";
 import { useSelector } from "react-redux";
 
 import QuizHeader from "./QuizHeader";

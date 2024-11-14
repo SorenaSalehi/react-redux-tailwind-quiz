@@ -1,13 +1,11 @@
-import React, { lazy, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import getCustomsQuiz, { getDefaultQuiz } from "../services/apiQuiz";
 import { gotError, quizzesFetched, resettingQuiz } from "./quiz/QuizSlice";
 
 import Categorize from "../features/categorize/Categorize";
 import Filter from "../features/filter/Filter";
 import Button from "./Button";
-import Footer from "./Footer";
 
 export default function Home() {
   //filter slice
@@ -65,6 +63,7 @@ export default function Home() {
     }
     cusQuiz();
   }
+
   return (
     <main className="flex flex-col justify-evenly">
       <section className="flex flex-col items-center justify-between gap-2 sm:flex-row">
